@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="home">
+  <div class="home__card">
+    <h1 class="home__title">Golpea al Topo</h1>
+
+    <p class="home__subtitle">Introduce tu nombre para empezar</p>
+
+    <input
+      class="home__input"
+      type="text"
+      [(ngModel)]="name"
+      placeholder="Tu nombre..."
+      (keyup.enter)="startGame()"
+    />
+
+    <button class="home__button" (click)="startGame()">
+      Jugar
+    </button>
+
+    <p class="home__error">
+      @if (error) {
+        {{ error }}
+      }
+    </p>
+  </div>
+</div>
