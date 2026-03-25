@@ -1,0 +1,50 @@
+.game {
+  padding: 2rem;
+  text-align: center;
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+  }
+
+  &__score {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  &__controls {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+  }
+
+  &__difficulty {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+
+    button {
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+
+      &.is-active {
+        background: #667eea;
+        color: white;
+      }
+    }
+  }
+}
