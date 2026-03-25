@@ -14,6 +14,8 @@ export class BoardComponent {
 
   @Output() cellClicked = new EventEmitter<number>();
 
+  cells = new Array(9).fill(0).map((cell, position) => position);
+
   onCellClicked(index: number) {
     this.cellClicked.emit(index);
   }
