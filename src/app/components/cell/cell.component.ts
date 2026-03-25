@@ -1,9 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cell',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './cell.component.html',
-  styleUrl: './cell.component.scss',
+  styleUrls: ['./cell.component.scss']
 })
-export class CellComponent {}
+export class CellComponent {
+  @Input() hasMole = false;
+  @Input() index = 0;
+
+  @Output() cellClicked = new EventEmitter<number>();
+
+  onClick() {
+    this.cellClicked.emit(this.index);
+  }
+}
