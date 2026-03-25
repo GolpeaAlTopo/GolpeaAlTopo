@@ -10,7 +10,16 @@ import { CellComponent } from '../cell/cell.component';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent {
-  @Input() activeIndex = -1;
+
+  private _activeIndex = -1;
+
+  @Input() set activeIndex(value: number) {
+    this._activeIndex = value;
+  }
+
+  get activeIndex() {
+    return this._activeIndex;
+  }
 
   @Output() cellClicked = new EventEmitter<number>();
 
