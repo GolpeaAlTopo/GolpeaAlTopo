@@ -1,55 +1,64 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { vi } from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { CellComponent } from './cell.component';
-import { EventEmitter } from '@angular/core';
 
 describe('CellComponent', () => {
   let component: CellComponent;
   let fixture: ComponentFixture<CellComponent>;
 
   beforeEach(async () => {
-  await TestBed.configureTestingModule({
-    imports: [CellComponent],
-  }).compileComponents();
+    await TestBed.configureTestingModule({
+      imports: [CellComponent],
+    }).compileComponents();
 
-  fixture = TestBed.createComponent(CellComponent);
-  component = fixture.componentInstance;
-});
+    fixture = TestBed.createComponent(CellComponent);
+    component = fixture.componentInstance;
+  });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
-  it('should accept input values', () => {
+  it('should have default values', () => {
+    expect(component.hasMole).toBe(false);
+    expect(component.index).toBe(0);
+  });
+
+  it('should not show the mole image by default', () => {
+    fixture.detectChanges();
+    const img = fixture.debugElement.query(By.css('img'));
+    expect(img).toBeNull();
+  });
+
+  it('should show the mole image when hasMole is true', () => {
     component.hasMole = true;
+    fixture.detectChanges();
+    const img = fixture.debugElement.query(By.css('img'));
+    expect(img).toBeTruthy();
+    expect(img.attributes['src']).toContain('diglett.png');
+    expect(img.attributes['alt']).toBe('Topo');
+  });
+
+  it('should emit cellClicked with the correct index when clicked', () => {
+    fixture.detectChanges();
+    const emitSpy = vi.spyOn(component.cellClicked, 'emit');
     component.index = 5;
+    
+    const cellDiv = fixture.debugElement.query(By.css('.cell'));
+    cellDiv.triggerEventHandler('click', null);
 
-    fixture.detectChanges();
-
-    expect(component.hasMole).toBe(true);
-    expect(component.index).toBe(5);
+    expect(emitSpy).toHaveBeenCalledWith(5);
   });
 
-  it('should emit cellClicked with index when onClick is called', () => {
-    vi.spyOn(component.cellClicked, 'emit');
-
-    component.index = 3;
-    component.onClick();
-
-    expect(component.cellClicked.emit).toHaveBeenCalledWith(3);
-  });
-
-  it('should emit cellClicked when clicking on the element', () => {
-    vi.spyOn(component.cellClicked, 'emit');
-
-    component.index = 7;
+  it('should call onClick() method when the div is clicked', () => {
     fixture.detectChanges();
+    const onClickSpy = vi.spyOn(component, 'onClick');
+    
+    const cellDiv = fixture.debugElement.query(By.css('.cell'));
+    cellDiv.nativeElement.click();
 
-    const cellElement = fixture.debugElement.query(By.css('div'));
-
-    cellElement.triggerEventHandler('click');
-
-    expect(component.cellClicked.emit).toHaveBeenCalledWith(7);
+    expect(onClickSpy).toHaveBeenCalled();
   });
 });
