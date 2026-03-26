@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CellComponent } from '../cell/cell.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, CellComponent],
+  imports: [ CellComponent],
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })

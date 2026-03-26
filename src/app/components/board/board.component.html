@@ -1,8 +1,9 @@
 <div class="board">
-  <app-cell
-    *ngFor="let cell of cells; let i = index"
-    [index]="i"
-    [hasMole]="i === activeIndex"
-    (cellClicked)="onCellClicked($event)"
-  />
+  @for (cell of cells; track $index) {
+    <app-cell
+      [index]="$index"
+      [hasMole]="$index === activeIndex"
+      (cellClicked)="onCellClicked($event)"
+    />
+  }
 </div>
