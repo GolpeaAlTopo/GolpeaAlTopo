@@ -26,7 +26,8 @@ export class GameComponent {
   }
 
   ngOnInit() {
-    this.playerName = history?.state?.name || this.storage.get<string>('playerName');
+    this.playerName = history?.state?.name || this.storage.get<string>('playerName') || 'Jugador';
+    this.score = this.storage.get<number>('score') || 0;
   }
 
   get intervalSpeed() {
@@ -75,6 +76,7 @@ export class GameComponent {
       this.activeIndex = -1;
       
     };
-    
+
+    this.storage.set('score', this.score);
   }
 }
