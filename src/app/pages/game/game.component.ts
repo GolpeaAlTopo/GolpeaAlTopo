@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from '../../components/board/board.component';
 import { ChangeDetectorRef } from '@angular/core';
-
+import { StorageService } from '../../services/storage';
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -21,12 +21,12 @@ export class GameComponent {
 
   isPlaying:boolean = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private storage: StorageService) {
     
   }
 
   ngOnInit() {
-    this.playerName = history.state.name || 'Jugador';
+    this.playerName = history?.state?.name || this.storage.get<string>('playerName');
   }
 
   get intervalSpeed() {
@@ -60,20 +60,20 @@ export class GameComponent {
 
   onCellClicked(index: number) {
     
-    if (!this.isPlaying) {
+    if (!this.isPlaying || index !== this.activeIndex) {
       return
     } else {
-      if (index === this.activeIndex) {
-            if (this.difficulty === 'low') {
-              this.score += 10;
-            } else if (this.difficulty === 'medium') {
-              this.score += 20;
-            } else {
-              this.score += 30;
-            }
+      
+      if (this.difficulty === 'low') {
+        this.score += 10;
+      } else if (this.difficulty === 'medium') {
+        this.score += 20;
+      } else {
+        this.score += 30;
+      }
 
-            this.activeIndex = -1;
-          }
+      this.activeIndex = -1;
+      
     };
     
   }

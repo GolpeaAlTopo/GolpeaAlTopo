@@ -1,30 +1,34 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { StorageService } from '../../services/storage';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  standalone: true
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   name = '';
   error = '';
 
-  constructor(private router: Router) {
-    
-  }
-  
+  constructor(private router: Router, private storage: StorageService) {}
 
   startGame() {
-    if (!this.name.trim()) {
+
+    const trimmedName = this.name.trim();
+
+    if (!trimmedName) {
       this.error = 'Introduce un nombre válido';
-      return
-    };
+      return;
+    }
+
     this.error = '';
-    this.router.navigate(['/game'], { state: { name: this.name } });
+    this.storage.set('playerName', trimmedName); 
+    this.router.navigate(['/game'], {
+      state: { name: trimmedName }
+    });
   }
 }
