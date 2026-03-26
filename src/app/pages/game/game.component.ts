@@ -11,15 +11,12 @@ import { StorageService } from '../../services/storage';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent {
-  playerName: string = '';
-  score: number = 0;
-
-  difficulty: string = '';
-
-  activeIndex: number = -1;
+  playerName = '';
+  score = 0;
+  difficulty = '';
+  activeIndex = -1;
   intervalId: any;
-
-  isPlaying:boolean = false;
+  isPlaying = false;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private storage: StorageService) {
     
@@ -48,7 +45,6 @@ export class GameComponent {
 
   startGame() {
     this.isPlaying = true;
-    this.score = 0;
     this.activeIndex = -1;
 
     clearInterval(this.intervalId);
