@@ -6,15 +6,13 @@ import { routes } from './app.routes';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
-export class App {
-  protected readonly title = signal('GolpeaAlTopo');
-
-  
+export class AppComponent {
+  protected readonly title = signal('GolpeaAlTopo');  
 }
 
-bootstrapApplication(App, {
+bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
