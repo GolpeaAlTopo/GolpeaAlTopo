@@ -10,7 +10,7 @@ import { routes } from './app.routes';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  protected readonly title = signal('GolpeaAlTopo');  
+  readonly title = signal('GolpeaAlTopo');  
 }
 
 bootstrapApplication(AppComponent, {
