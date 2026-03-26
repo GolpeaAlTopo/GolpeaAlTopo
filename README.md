@@ -35,4 +35,4 @@ npm install
 ng serve
 ```
 
-4. ** Abrir el navegador en http://localhost:4200/**
+4. **Abrir el navegador en http://localhost:4200/**
