@@ -19,7 +19,7 @@ Para correr el proyecto de forma local:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/GolpeaAlTopo/GolpeaAlTopo.git](https://github.com/GolpeaAlTopo/GolpeaAlTopo.git)
+   git clone https://github.com/GolpeaAlTopo/GolpeaAlTopo.git
    cd GolpeaAlTopo
    ```
 
@@ -33,5 +33,6 @@ npm install
 
 ```bash
 ng serve
+```
 
 4. ** Abrir el navegador en http://localhost:4200/**
