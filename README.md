@@ -4,7 +4,7 @@
 
 ## Repositorio
 Puedes jugar a la versión más reciente aquí:
-[https://golpealtopo.github.io/GolpeaAlTopo/](https://golpealtopo.github.io/GolpeaAlTopo/)
+[https://golpeaaltopo.github.io/GolpeaAlTopo/](https://golpeaaltopo.github.io/GolpeaAlTopo/)
 
 ## Requisitos Previos
 
