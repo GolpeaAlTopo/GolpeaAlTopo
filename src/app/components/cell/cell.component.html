@@ -1,5 +1,10 @@
-<div class="cell" (click)="onClick()">
+<button 
+  type="button" 
+  class="cell" 
+  (click)="onClick()"
+  [attr.aria-label]="hasMole ? 'Golpear al topo' : 'Celda vacía'"
+>
   @if (hasMole) {
     <img src="assets/img/diglett.png" alt="Topo" />
   }
-</div>
+</button>
