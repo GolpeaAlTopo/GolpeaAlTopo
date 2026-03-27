@@ -1,4 +1,4 @@
-<div class="game">
+<section class="game">
   <header class="game__header">
     <h2 class="game__title">Hola, {{ playerName }}</h2>
     <p class="game__score">Puntos: {{ score }}</p>
@@ -7,7 +7,7 @@
   <section class="game__controls">
     <button class="game__button" (click)="startGame()">Play</button>
 
-    <div class="game__difficulty">
+    <section class="game__difficulty">
       <button (click)="setDifficulty('low')" [class.is-active]="difficulty === 'low'">
         Bajo
       </button>
@@ -19,11 +19,11 @@
       <button (click)="setDifficulty('high')" [class.is-active]="difficulty === 'high'">
         Alto
       </button>
-    </div>
+    </section>
   </section>
 
   <app-board
     [activeIndex]="activeIndex"
     (cellClicked)="onCellClicked($event)"
   />
-</div>
+</section>

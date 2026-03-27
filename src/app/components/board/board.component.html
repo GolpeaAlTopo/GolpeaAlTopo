@@ -1,4 +1,4 @@
-<div class="board">
+<section class="board">
   @for (cell of cells; track $index) {
     <app-cell
       [index]="$index"
@@ -6,4 +6,4 @@
       (cellClicked)="onCellClicked($event)"
     />
   }
-</div>
+</section>
